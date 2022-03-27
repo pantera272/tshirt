@@ -13,6 +13,6 @@ const  ProductImage = props => {
 }
 
 ProductImage.propTypes = {
-  props: PropTypes.object.isRequired
+  //props: PropTypes.object.isRequired
 }
 export default ProductImage;

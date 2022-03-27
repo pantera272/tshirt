@@ -1,11 +1,10 @@
 import styles from './Product.module.scss';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
 import PropTypes from 'prop-types';
 
 const Product = props => {
-
   const possibleSize = props.sizes.map(size => size.name);
 
   const [currentSize, setCurrentSize] = useState(possibleSize[0]);
@@ -16,10 +15,17 @@ const Product = props => {
     setCurrentColor(color); 
   }
 
-  const handleSize = (size, price) => {
+  const handleSize = (size) => {
     setCurrentSize(size);
-    setCurrentPrice(props.basePrice + price);
   }
+
+  const calculate = () => {
+    const price = possibleSize.indexOf(currentSize);
+    setCurrentPrice(props.basePrice + props.sizes[price].additionalPrice);
+  }
+
+  useMemo(() => calculate(), [currentSize]);
+
 
   const sendOrder = e => {
     e.preventDefault();

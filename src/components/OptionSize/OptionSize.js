@@ -7,7 +7,7 @@ const OptionSize = props => {
   
   return (
     <ul className={styles.choices}>
-      {props.sizes.map(size => <li key={shortid}><button onClick={() => props.action(size.name, size.additionalPrice)} type="button" className={clsx(props.currentSize === size.name && styles.active )}>{size.name}</button></li>)}
+      {props.sizes.map(size => <li key={shortid()}><button onClick={() => props.action(size.name)} type="button" className={clsx(props.currentSize === size.name && styles.active )}>{size.name}</button></li>)}
     </ul>
   )
 }

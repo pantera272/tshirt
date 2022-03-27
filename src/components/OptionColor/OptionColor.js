@@ -16,7 +16,7 @@ const OptionColor = props => {
 
   return (
     <ul className={styles.choices}>
-      {props.colors.map(color => <li key={shortid}><button onClick={() =>props.action(color)} type="button" className={clsx(prepareColorClassName(color),  color === props.currentColor && styles.active)} /></li>)}
+      {props.colors.map(color => <li key={shortid()}><button onClick={() =>props.action(color)} type="button" className={clsx(prepareColorClassName(color),  color === props.currentColor && styles.active)} /></li>)}
     </ul> 
   )
 }
